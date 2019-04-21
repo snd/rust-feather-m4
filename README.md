@@ -5,11 +5,27 @@ experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3
 ) board featuring the ARM Cortex-M4F microprocessor core
 
 
-## steps you need to do to initialize the project
+## steps you need to do to compile this and put it onto the feather M4
 
+install rust:
+```
+curl https://sh.rustup.rs -sSf | sh
+rustup update
+```
+
+install components for ARM M4 targets:
 ```
 rustup target add thumbv6m-none-eabi thumbv7m-none-eabi thumbv7em-none-eabi thumbv7em-none-eabihf
+```
 
+clone:
+```
+git clone git@github.com:snd/rust-feather-m4.git
+cd rust-feather-m4
+```
+
+build:
+```
 cargo build
 ```
 
