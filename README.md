@@ -43,7 +43,10 @@ before executing this put the feather into bootloader mode by doublepressing the
 bossac --port /dev/cu.usbmodem1421 --offset 0x4000 --erase --write --verify --reset --info --debug target/thumbv7em-none-eabihf/release/rust-feather-m4
 ```
 
-`--offset 0x4000` source https://learn.adafruit.com/adafruit-feather-m4-express-atsamd51/uf2-bootloader-details
+- `--port /dev/cu.usbmodem1421` found by running `find /dev -iname cu*usb* 2>/dev/null`
+  - `iname` = case insensitive
+  - `2>/dev/null` = ignore errors
+- `--offset 0x4000` source https://learn.adafruit.com/adafruit-feather-m4-express-atsamd51/uf2-bootloader-details
 
 ## board
 
@@ -75,13 +78,6 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
     - 9.2 Physical Memory Map
   - RAM is commonly located at address 0x2000_0000
     - https://github.com/rust-embedded/cortex-m-quickstart
-
-
-## core
-
-## 
-
-ARM 
 
 ## files
 
