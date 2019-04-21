@@ -18,7 +18,16 @@ install components for ARM M4 targets:
 rustup target add thumbv6m-none-eabi thumbv7m-none-eabi thumbv7em-none-eabi thumbv7em-none-eabihf
 ```
 
-clone:
+install the [bossa flashing utility](https://github.com/shumatech/BOSSA)
+which we'll later use to flash the chip:
+```
+git clone https://github.com/shumatech/BOSSA.git
+cd BOSSA
+make
+cp bin/bossac ~/bin
+```
+
+enter this repository:
 ```
 git clone git@github.com:snd/rust-feather-m4.git
 cd rust-feather-m4
@@ -26,8 +35,15 @@ cd rust-feather-m4
 
 build:
 ```
-cargo build
+cargo build --release
 ```
+
+before executing this put the feather into bootloader mode by doublepressing the reset button:
+```
+bossac --port /dev/cu.usbmodem1421 --offset 0x4000 --erase --write --verify --reset --info --debug target/thumbv7em-none-eabihf/release/rust-feather-m4
+```
+
+`--offset 0x4000` source https://learn.adafruit.com/adafruit-feather-m4-express-atsamd51/uf2-bootloader-details
 
 ## board
 
@@ -67,7 +83,9 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
 
 ARM 
 
+## files
 
+- [memory.x](memory.x) contains specification of the memory layout of the target chip
 
 ## steps taken to initialize this project
 
