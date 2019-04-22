@@ -80,9 +80,10 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
 
 ## awesome resources
 
+- https://github.com/atsamd-rs/atsamd - for using the GPIO, clock and serial interfaces on the M4
 - https://rust-embedded.github.io/book/
 - https://github.com/rust-embedded/awesome-embedded-rust
-- https://github.com/rust-embedded/alloc-cortex-m - A heap allocator for Cortex-M processors
+- https://github.com/rust-embedded/alloc-cortex-m - a heap allocator for Cortex-M processors
 
 ## files
 
