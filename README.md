@@ -49,6 +49,7 @@ bossac --port /dev/cu.usbmodem1421 --offset 0x4000 --erase --write --verify --re
 ## board
 
 https://www.alliedelec.com/product/adafruit-industries/3857/71458403
+
 https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648-ND/9553567
 
 ## ATSAMD51J19 microprocessor
@@ -69,13 +70,13 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
 - flash origin address = `0x00000000`
   - source: https://www.mouser.com/datasheet/2/268/60001507A-1130176.pdf
     - `After Reset has been released, the CPU starts fetching PC and SP values from the Reset address,0x00000000. This points to the first executable address in the internal Flash memory`
-    - 9.2 Physical Memory Map
+    - search for `Physical Memory Map`
 - RAM origin address = `0x20000000`
   - source: https://www.mouser.com/datasheet/2/268/60001507A-1130176.pdf
-    - 8. Product Memory Mapping Overview
-    - 9.2 Physical Memory Map
-  - RAM is commonly located at address 0x2000_0000
-    - https://github.com/rust-embedded/cortex-m-quickstart
+    - search for `Product Memory Mapping Overview`
+    - search for `Physical Memory Map`
+  - RAM is commonly located at address `0x20000000`
+    - source: https://github.com/rust-embedded/cortex-m-quickstart
 
 ## awesome resources
 
