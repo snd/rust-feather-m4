@@ -1,9 +1,7 @@
 # rust feather M4
 
-experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857 
-)](https://www.adafruit.com/product/3857
-) board featuring the ARM Cortex-M4F microprocessor core
-
+experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857)](https://www.adafruit.com/product/3857
+) board with the ATSAMD51J19 microprocessor featuring the ARM Cortex-M4F microprocessor core
 
 ## steps you need to do to compile this and put it onto the feather M4
 
@@ -13,9 +11,9 @@ curl https://sh.rustup.rs -sSf | sh
 rustup update
 ```
 
-install components for ARM M4 targets:
+install component for ARM M4 targets:
 ```
-rustup target add thumbv6m-none-eabi thumbv7m-none-eabi thumbv7em-none-eabi thumbv7em-none-eabihf
+rustup target add thumbv7em-none-eabihf
 ```
 
 install the [bossa flashing utility](https://github.com/shumatech/BOSSA)
@@ -78,6 +76,12 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
     - 9.2 Physical Memory Map
   - RAM is commonly located at address 0x2000_0000
     - https://github.com/rust-embedded/cortex-m-quickstart
+
+## awesome resources
+
+- https://rust-embedded.github.io/book/
+- https://github.com/rust-embedded/awesome-embedded-rust
+- https://github.com/rust-embedded/alloc-cortex-m - A heap allocator for Cortex-M processors
 
 ## files
 
