@@ -3,7 +3,7 @@
 experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857)](https://www.adafruit.com/product/3857
 ) board with the ATSAMD51J19 microprocessor featuring the ARM Cortex-M4F microprocessor core
 
-## steps you need to do to compile this and put it onto the feather M4
+## steps to compile and flash
 
 install rust:
 ```
