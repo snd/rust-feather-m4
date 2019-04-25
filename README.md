@@ -1,7 +1,6 @@
 # rust feather M4
 
-experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857)](https://www.adafruit.com/product/3857
-) board with the ATSAMD51J19 microprocessor featuring the ARM Cortex-M4F microprocessor core
+experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857)](https://www.adafruit.com/product/3857) board with the ATSAMD51J19 microprocessor featuring the ARM Cortex-M4F microprocessor core
 
 ## steps to compile and flash
 
@@ -62,11 +61,11 @@ https://learn.adafruit.com/adafruit-feather-m4-express-atsamd51/downloads
 https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648-ND/9553567
 
 - 120MHZ
-    - source: https://www.mouser.com/ProductDetail/Microchip-Technology/ATSAMD51J19A-AUT
+    - source: https://www.adafruit.com/product/3857
 - flash length = `512KB`
-    - source: https://www.mouser.com/ProductDetail/Microchip-Technology/ATSAMD51J19A-AUT
+    - source: https://www.adafruit.com/product/3857
 - RAM length =  `192KB`
-    - source: https://www.mouser.com/ProductDetail/Microchip-Technology/ATSAMD51J19A-AUT
+    - source: https://www.adafruit.com/product/3857
 - flash origin address = `0x00000000`
   - source: https://www.mouser.com/datasheet/2/268/60001507A-1130176.pdf
     - `After Reset has been released, the CPU starts fetching PC and SP values from the Reset address,0x00000000. This points to the first executable address in the internal Flash memory`
@@ -84,6 +83,9 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
 - https://rust-embedded.github.io/book/
 - https://github.com/rust-embedded/awesome-embedded-rust
 - https://github.com/rust-embedded/alloc-cortex-m - a heap allocator for Cortex-M processors
+- https://github.com/johnthagen/min-sized-rust - How to minimize Rust binary size
+- https://github.com/RazrFalcon/cargo-bloat - Find out what takes most of the space in your executable
+- https://jamesmunns.com/blog/tinyrocket/ - making tiny rust executables
 
 ## files
 
