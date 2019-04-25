@@ -1,6 +1,7 @@
 MEMORY
 {
-  FLASH : ORIGIN = 0x00000000, LENGTH = 512K
+  /* Leave 16k for the default bootloader on the Feather M4 */
+  FLASH : ORIGIN = 0x00000000 + 16K, LENGTH = 512K - 16K
   RAM : ORIGIN = 0x20000000, LENGTH = 192K
 }
 
