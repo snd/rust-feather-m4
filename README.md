@@ -15,13 +15,19 @@ install component for ARM M4 targets:
 rustup target add thumbv7em-none-eabihf
 ```
 
-install the [bossa flashing utility](https://github.com/shumatech/BOSSA)
-which we'll later use to flash the chip:
+install `bossac` (https://github.com/shumatech/BOSSA) which we'll use to upload our binary to the feather M4s flash memory:
 ```
 git clone https://github.com/shumatech/BOSSA.git
 cd BOSSA
 make
 cp bin/bossac ~/bin
+```
+
+install `arm-none-eabi-objcopy` which makes `*.bin` files out of `*.elf` files (https://stackoverflow.com/questions/2427011/what-is-the-difference-between-elf-files-and-bin-files):
+```
+brew tap PX4/homebrew-px4
+brew update
+brew install gcc-arm-none-eabi
 ```
 
 enter this repository:
@@ -37,7 +43,7 @@ cargo build --release
 
 before executing this put the feather into bootloader mode by doublepressing the reset button:
 ```
-bossac --port /dev/cu.usbmodem1421 --offset 0x4000 --erase --write --verify --reset --info --debug target/thumbv7em-none-eabihf/release/rust-feather-m4
+./flash {name of any of the rust programs in src/bin}
 ```
 
 - `--port /dev/cu.usbmodem1421` found by running `find /dev -iname cu*usb* 2>/dev/null`
@@ -79,7 +85,7 @@ https://www.digikey.com/product-detail/en/adafruit-industries-llc/3857/1528-2648
 
 ## awesome resources
 
-- https://github.com/atsamd-rs/atsamd - for using the GPIO, clock and serial interfaces on the M4
+- https://github.com/atsamd-rs/atsamd - for using the GPIO, clock, serial interfaces, etc on the M4
 - https://rust-embedded.github.io/book/
 - https://github.com/rust-embedded/awesome-embedded-rust
 - https://github.com/rust-embedded/alloc-cortex-m - a heap allocator for Cortex-M processors

@@ -1,32 +1,46 @@
+//! alternates red led being on for 2 seconds and off for 2 seconds
 #![no_std]
 #![no_main]
 
+// set the panicking behavior to halt
 extern crate panic_halt;
 
-use cortex_m_rt::entry;
-use atsamd_hal::prelude::*;
-use atsamd_hal::delay::Delay;
-use atsamd_hal::clock::GenericClockController;
-use atsamd_hal::hal::digital::OutputPin;
-use atsamd_hal::target_device::{Peripherals, CorePeripherals};
+extern crate feather_m4 as hal;
+
+use hal::{
+    prelude::*,
+    entry,
+    Peripherals,
+    CorePeripherals,
+    clock::GenericClockController,
+    delay::Delay,
+};
 
 #[entry]
 fn main() -> ! {
+    // all the hardware devices available on the chip
     let mut peripherals = Peripherals::take().unwrap();
-    let port = peripherals.PORT;
-    let mut parts = port.split();
-    // let mut led_pin = parts.pa13.into_open_drain_output(&mut parts.port);
-    let mut led_pin = parts.pa23.into_open_drain_output(&mut parts.port);
+    let core_peripherals = CorePeripherals::take().unwrap();
 
-    let core = CorePeripherals::take().unwrap();
-    let mut clocks = GenericClockController::with_external_32kosc(
+    let mut pins = feather_m4::Pins::new(peripherals.PORT);
+
+    let mut led_pin = pins.d13.into_open_drain_output(&mut pins.port);
+
+    let mut clock_controller = GenericClockController::with_external_32kosc(
+        // generic clock generator
         peripherals.GCLK,
+        // main clock
         &mut peripherals.MCLK,
+        // 32HZ oscillators control
         &mut peripherals.OSC32KCTRL,
+        // oscillators control
         &mut peripherals.OSCCTRL,
+        // non-volatile memory controller
         &mut peripherals.NVMCTRL,
     );
-    let mut delay = Delay::new(core.SYST, &mut clocks);
+
+    // SYST = system timer
+    let mut delay = Delay::new(core_peripherals.SYST, &mut clock_controller);
 
     loop {
         led_pin.set_high();

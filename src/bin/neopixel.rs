@@ -1,10 +1,11 @@
+//! 
 #![no_std]
 #![no_main]
 
+// set the panicking behavior to halt
 extern crate panic_halt;
 
 extern crate feather_m4 as hal;
-extern crate smart_leds;
 
 use hal::{
     prelude::*,
@@ -17,7 +18,7 @@ use hal::{
 
 use smart_leds::{
     Color,
-    colors::RED,
+    colors::{RED, BLUE},
     brightness,
     SmartLedsWrite,
 };
@@ -43,16 +44,18 @@ fn main() -> ! {
     let mut pins = hal::Pins::new(peripherals.PORT);
 
     let mut neopixel_pin = pins.d8.into_push_pull_output(&mut pins.port);
+    // TC3 = timer counter 3
     let mut neopixel = rust_feather_m4::new_neopixel(peripherals.TC3, &mut peripherals.MCLK, &mut clock_controller, &mut neopixel_pin);
 
+    // SYST = system timer
     let mut delay = Delay::new(core_peripherals.SYST, &mut clock_controller);
 
     loop {
         let color = [RED; 1];
         neopixel.write(brightness(color.iter().cloned(), 32)).unwrap();
-        delay.delay_ms(250u8);
-        let color = [Color::default(); 1];
+        delay.delay_ms(500u16);
+        let color = [BLUE; 1];
         neopixel.write(brightness(color.iter().cloned(), 32)).unwrap();
-        delay.delay_ms(250u8);
+        delay.delay_ms(500u16);
     }
 }

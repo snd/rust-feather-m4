@@ -8,7 +8,6 @@ extern crate ws2812_timer_delay as ws2812;
 
 use hal::{
     prelude::*,
-    Peripherals,
     timer::TimerCounter,
     clock::GenericClockController,
     gpio::{Output, PushPull, Pb3},
