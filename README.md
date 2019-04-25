@@ -2,7 +2,21 @@
 
 experiments with rust on the [Adafruit Feather M4 Express (Adafruit Industries 3857)](https://www.adafruit.com/product/3857) board with the ATSAMD51J19 microprocessor featuring the ARM Cortex-M4F microprocessor core
 
-## steps to compile and flash
+## run
+
+```
+./build.sh {name of one in src/bin}
+```
+
+```
+./flash.sh {name of one in src/bin}
+```
+
+```
+./build-and-flash.sh {name of one in src/bin}
+```
+
+## install
 
 install rust:
 ```
@@ -35,21 +49,6 @@ enter this repository:
 git clone git@github.com:snd/rust-feather-m4.git
 cd rust-feather-m4
 ```
-
-build:
-```
-cargo build --release
-```
-
-before executing this put the feather into bootloader mode by doublepressing the reset button:
-```
-./flash {name of any of the rust programs in src/bin}
-```
-
-- `--port /dev/cu.usbmodem1421` found by running `find /dev -iname cu*usb* 2>/dev/null`
-  - `iname` = case insensitive
-  - `2>/dev/null` = ignore errors
-- `--offset 0x4000` source https://learn.adafruit.com/adafruit-feather-m4-express-atsamd51/uf2-bootloader-details
 
 ## board
 

@@ -8,7 +8,7 @@ fi
 
 set -eva
 
-# found by running ./list-usbmodems
+# found by running ./list-usbmodems.sh
 PORT=/dev/cu.usbmodem1421
 
 BIN=target/thumbv7em-none-eabihf/release/$1.bin
